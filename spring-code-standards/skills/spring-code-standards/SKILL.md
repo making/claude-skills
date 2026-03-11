@@ -133,12 +133,13 @@ For `@SpringBootTest` with a random/defined port, inject `RestTestClient` via
 `@AutoConfigureRestTestClient`:
 
 ```java
-import import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 // ...
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureRestTestClient
-class UserControllerIT {
+class UserControllerIntegrationTest {
 
     @Autowired
     RestTestClient client;
