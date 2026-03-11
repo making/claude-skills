@@ -11,6 +11,22 @@ Apply these rules every time you write or review test code in this project.
 
 ---
 
+## Test Strategy
+
+Prefer **E2E tests** and **Integration tests** that verify external behavior over unit tests that
+test internal implementation details. Tests should exercise the system through its public interfaces
+(HTTP endpoints, CLI commands, message handlers) whenever possible.
+
+- **E2E tests**: For applications with HTML-based UI, use **Playwright** for browser-based E2E
+  testing. Playwright tests should drive the application through the browser just as a real user
+  would.
+- **Integration tests**: For API-based applications, use `@SpringBootTest` with a real HTTP client
+  (`WebTestClient` or `RestTestClient`) to test endpoints end-to-end within the Spring context.
+- **Unit tests**: Reserve for pure logic (utilities, domain calculations) that has no external
+  dependencies and benefits from fast, isolated testing.
+
+---
+
 ## Unit Tests
 
 Use **JUnit 5** with **AssertJ** assertions for service layer tests.
@@ -70,6 +86,8 @@ void shouldWriteFile(@TempDir Path tempDir) {
 
 ## Quick Checklist
 
+- [ ] Prefer E2E / Integration tests over unit tests for verifying external behavior
+- [ ] Browser-based E2E tests use Playwright
 - [ ] Unit tests use JUnit 5 + AssertJ (not JUnit `assertEquals` etc.)
 - [ ] Integration tests use `@SpringBootTest` + Testcontainers (Spring Boot apps only)
 - [ ] Filesystem tests use `@TempDir`
