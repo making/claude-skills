@@ -69,6 +69,37 @@ void shouldWriteFile(@TempDir Path tempDir) {
 
 ---
 
+## Mocking External APIs
+
+When tests depend on external APIs (e.g. GitHub API, Slack API), use a **mock HTTP server** based on
+`com.sun.net.httpserver.HttpServer`. Do **not** use third-party mock server libraries (WireMock,
+MockWebServer, etc.).
+
+- For a **single test class**, create a simple inline `HttpServer` setup.
+- For **multiple test classes** that need a mock server, copy the `MockServer` utility from
+  [categolj/entry-api MockServer.java](https://raw.githubusercontent.com/categolj/entry-api/refs/heads/main/src/test/java/am/ik/blog/mockserver/MockServer.java)
+  and customize as needed.
+
+```java
+// Example usage with MockServer utility
+MockServer mockServer = new MockServer(0); // 0 = random available port
+mockServer.GET("/repos/owner/repo", request -> MockServer.Response.json("""
+        {
+            "id": 12345,
+            "full_name": "owner/repo"
+        }
+        """));
+mockServer.run();
+
+// Point the application to the mock server
+// e.g. via @DynamicPropertySource: "github.api.url" -> "http://localhost:" + mockServer.port()
+
+// Clean up
+mockServer.close(); // implements AutoCloseable — use try-with-resources where possible
+```
+
+---
+
 ## Test Independence
 
 - Tests must **not depend on each other** — each test must set up its own state.
@@ -88,6 +119,7 @@ void shouldWriteFile(@TempDir Path tempDir) {
 
 - [ ] Prefer E2E / Integration tests over unit tests for verifying external behavior
 - [ ] Browser-based E2E tests use Playwright
+- [ ] External API mocks use `com.sun.net.httpserver.HttpServer` (not WireMock, MockWebServer, etc.)
 - [ ] Unit tests use JUnit 5 + AssertJ (not JUnit `assertEquals` etc.)
 - [ ] Integration tests use `@SpringBootTest` + Testcontainers (Spring Boot apps only)
 - [ ] Filesystem tests use `@TempDir`
