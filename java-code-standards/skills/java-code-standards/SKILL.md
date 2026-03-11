@@ -57,6 +57,43 @@ version than the project targets.
 
 ---
 
+## Null Safety
+
+- **Use JSpecify + NullAway** to enforce null-safety at compile time.
+- NullAway is configured via `nullability-maven-plugin`. If the project does not have it, add to
+  `<build><plugins>` in `pom.xml`:
+  ```xml
+  <plugin>
+      <groupId>am.ik.maven</groupId>
+      <artifactId>nullability-maven-plugin</artifactId>
+      <version>0.3.0</version>
+      <extensions>true</extensions>
+      <executions>
+          <execution>
+              <goals>
+                  <goal>configure</goal>
+                  <goal>generate-package-info</goal>
+              </goals>
+          </execution>
+      </executions>
+  </plugin>
+  ```
+- If JSpecify dependency is missing, add it (Spring Boot 4+ includes it transitively):
+  ```xml
+  <dependency>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
+      <version>1.0.0</version>
+  </dependency>
+  ```
+- **Approach**: Do NOT eagerly annotate with `@Nullable`. Instead, keep the default (non-null) and
+  run `mvn compile` to let NullAway catch issues at compile time. Fix errors by making code
+  null-safe:
+  - Add `@Nullable` only where null is genuinely required (return value or parameter).
+  - Prefer null-free designs: return `Optional`, use default values, validate early, etc.
+
+---
+
 ## Circular References
 
 - Avoid circular references between **classes** and between **packages**.
@@ -72,5 +109,8 @@ version than the project targets.
 - [ ] No Lombok annotations or imports
 - [ ] No Guava imports
 - [ ] Modern Java features used (within project's Java version)
+- [ ] `nullability-maven-plugin` present in `pom.xml`
+- [ ] JSpecify dependency present in `pom.xml`
+- [ ] `mvn compile` passes with no NullAway errors
 - [ ] No circular dependencies between classes or packages
 
