@@ -14,6 +14,7 @@ Apply these rules every time you write or review Java code in this project.
 ## Code Style
 
 - **Builder pattern**: Required when a constructor or method has **more than two arguments**.
+  See [Builder Pattern Rules](#builder-pattern-rules) below for implementation details.
 - **Javadoc and comments**: Always write in **English**.
 - **Formatting**: Must comply with **Spring Java Format** (enforced via Maven plugin). All code
   must pass formatting validation before commit. If the plugin is missing from `pom.xml`, add it
@@ -25,6 +26,125 @@ Apply these rules every time you write or review Java code in this project.
       <version>0.0.47</version>
   </plugin>
   ```
+
+### Builder Pattern Rules
+
+#### Records with > 2 components
+
+Add a static inner `Builder` class. Mark reference-type fields with `@Nullable` and leave them
+uninitialized. Validate required fields in `build()` using `Objects.requireNonNull` with an
+error message.
+
+```java
+public record UserResponse(String id, String name, String email, Instant createdAt) {
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+
+        @Nullable
+        private String id;
+
+        @Nullable
+        private String name;
+
+        @Nullable
+        private String email;
+
+        @Nullable
+        private Instant createdAt;
+
+        private Builder() {
+        }
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder createdAt(Instant createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public UserResponse build() {
+            return new UserResponse(Objects.requireNonNull(this.id, "id is required"),
+                    Objects.requireNonNull(this.name, "name is required"),
+                    Objects.requireNonNull(this.email, "email is required"),
+                    Objects.requireNonNull(this.createdAt, "createdAt is required"));
+        }
+
+    }
+
+}
+```
+
+#### Methods with > 2 parameters
+
+Extract parameters into a **parameter object** (record). If the parameter object itself has > 2
+components, it also needs a builder.
+
+```java
+// Before (3 args — violates rule)
+public List<User> findPage(int offset, int limit, String sort) { ... }
+
+// After (1 arg — parameter object with builder)
+public record PageRequest(int offset, int limit, String sort) {
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+
+        private int offset;
+
+        private int limit;
+
+        @Nullable
+        private String sort;
+
+        private Builder() {
+        }
+
+        public Builder offset(int offset) {
+            this.offset = offset;
+            return this;
+        }
+
+        public Builder limit(int limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        public Builder sort(String sort) {
+            this.sort = sort;
+            return this;
+        }
+
+        public PageRequest build() {
+            return new PageRequest(this.offset, this.limit,
+                    Objects.requireNonNull(this.sort, "sort is required"));
+        }
+
+    }
+
+}
+
+public List<User> findPage(PageRequest request) { ... }
+```
 
 ---
 
