@@ -73,6 +73,9 @@ version than the project targets.
               </goals>
           </execution>
       </executions>
+      <configuration>
+          <checking>tests</checking>
+      </configuration>
   </plugin>
   ```
 - If JSpecify dependency is missing, add it (Spring Boot 4+ includes it transitively):
