@@ -16,20 +16,42 @@ A collection of Claude skills for Java and Spring Boot development.
 
 ### Plugin Marketplace (recommended)
 
-Add this marketplace to Claude Code:
+Add this marketplace to Claude Code using the slash command or CLI:
 
-```
+```bash
+# Slash command (inside Claude Code session)
 /plugin marketplace add making/claude-skills
+
+# CLI
+claude plugin marketplace add making/claude-skills
 ```
 
 Then install individual plugins:
 
-```
+```bash
+# Slash command
 /plugin install java-code-standards@making-claude-skills
 /plugin install java-package-structure@making-claude-skills
 /plugin install java-testing-standards@making-claude-skills
 /plugin install spring-code-standards@making-claude-skills
 /plugin install documentation-standards@making-claude-skills
+
+# CLI
+claude plugin install java-code-standards@making-claude-skills
+claude plugin install java-package-structure@making-claude-skills
+claude plugin install java-testing-standards@making-claude-skills
+claude plugin install spring-code-standards@making-claude-skills
+claude plugin install documentation-standards@making-claude-skills
+```
+
+To install for a specific scope:
+
+```bash
+# User scope (default)
+claude plugin install java-code-standards@making-claude-skills
+
+# Project scope (shared with team via .claude/settings.json)
+claude plugin install java-code-standards@making-claude-skills --scope project
 ```
 
 ### Manual Installation
