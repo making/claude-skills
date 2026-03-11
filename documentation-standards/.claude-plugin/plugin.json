@@ -1,0 +1,12 @@
+{
+  "name": "documentation-standards",
+  "description": "Documentation standards for README.md and CLAUDE.md",
+  "version": "1.0.0",
+  "author": {
+    "name": "making"
+  },
+  "repository": "https://github.com/making/claude-skills",
+  "license": "MIT",
+  "keywords": ["documentation", "readme", "claude-md"],
+  "category": "coding-standards"
+}

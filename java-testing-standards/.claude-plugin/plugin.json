@@ -1,0 +1,12 @@
+{
+  "name": "java-testing-standards",
+  "description": "Testing standards: JUnit 5, AssertJ, Testcontainers, assertion style",
+  "version": "1.0.0",
+  "author": {
+    "name": "making"
+  },
+  "repository": "https://github.com/making/claude-skills",
+  "license": "MIT",
+  "keywords": ["java", "testing", "junit5", "assertj", "testcontainers"],
+  "category": "coding-standards"
+}

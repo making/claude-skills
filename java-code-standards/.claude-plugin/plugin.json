@@ -1,0 +1,12 @@
+{
+  "name": "java-code-standards",
+  "description": "General Java coding standards: builder pattern, modern Java features, prohibited libraries",
+  "version": "1.0.0",
+  "author": {
+    "name": "making"
+  },
+  "repository": "https://github.com/making/claude-skills",
+  "license": "MIT",
+  "keywords": ["java", "code-standards", "spring-java-format"],
+  "category": "coding-standards"
+}

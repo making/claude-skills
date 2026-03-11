@@ -2,9 +2,9 @@
 
 A collection of Claude skills for Java and Spring Boot development.
 
-## Skills
+## Plugins
 
-| Skill | Description |
+| Plugin | Description |
 |---|---|
 | `java-code-standards` | General Java coding standards: builder pattern, modern Java features, prohibited libraries |
 | `java-package-structure` | Package by feature structure and DTO placement rules |
@@ -14,38 +14,36 @@ A collection of Claude skills for Java and Spring Boot development.
 
 ## Installation
 
-### Claude Code
+### Plugin Marketplace (recommended)
+
+Add this marketplace to Claude Code:
+
+```
+/plugin marketplace add making/claude-skills
+```
+
+Then install individual plugins:
+
+```
+/plugin install java-code-standards@making-claude-skills
+/plugin install java-package-structure@making-claude-skills
+/plugin install java-testing-standards@making-claude-skills
+/plugin install spring-code-standards@making-claude-skills
+/plugin install documentation-standards@making-claude-skills
+```
+
+### Manual Installation
 
 Clone this repository and copy skills into `~/.claude/skills/`:
 
 ```bash
 git clone https://github.com/making/claude-skills /tmp/claude-skills
 mkdir -p ~/.claude/skills
-cp -r /tmp/claude-skills/*-standards ~/.claude/skills/
+for d in /tmp/claude-skills/*/skills/*/; do cp -r "$d" ~/.claude/skills/; done
 rm -rf /tmp/claude-skills
 ```
 
-Or install individual skills:
-
-```bash
-# Example: install java-code-standards only
-mkdir -p ~/.claude/skills
-git clone --filter=blob:none --sparse https://github.com/making/claude-skills /tmp/claude-skills
-cd /tmp/claude-skills
-git sparse-checkout set java-code-standards
-cp -r java-code-standards ~/.claude/skills/
-rm -rf /tmp/claude-skills
-```
-
-After installation, verify with `/skills` in Claude Code. Each skill directory should be directly under `~/.claude/skills/`:
-
-```
-~/.claude/skills/
-  java-code-standards/SKILL.md
-  java-testing-standards/SKILL.md
-  spring-code-standards/SKILL.md
-  ...
-```
+After installation, verify with `/skills` in Claude Code.
 
 ### Claude.ai
 

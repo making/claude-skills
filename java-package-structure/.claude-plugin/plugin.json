@@ -1,0 +1,12 @@
+{
+  "name": "java-package-structure",
+  "description": "Package by feature structure and DTO placement rules",
+  "version": "1.0.0",
+  "author": {
+    "name": "making"
+  },
+  "repository": "https://github.com/making/claude-skills",
+  "license": "MIT",
+  "keywords": ["java", "package-structure", "architecture"],
+  "category": "coding-standards"
+}

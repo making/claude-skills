@@ -1,0 +1,12 @@
+{
+  "name": "spring-code-standards",
+  "description": "Spring Boot standards: DI, RestClient, JdbcClient, configuration, SQLite, HTTP testing",
+  "version": "1.0.0",
+  "author": {
+    "name": "making"
+  },
+  "repository": "https://github.com/making/claude-skills",
+  "license": "MIT",
+  "keywords": ["java", "spring-boot", "restclient", "jdbcclient"],
+  "category": "coding-standards"
+}
