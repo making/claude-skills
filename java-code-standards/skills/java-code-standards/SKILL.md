@@ -39,21 +39,21 @@ version than the project targets.
 
 | Feature | Min Version | Usage |
 |---|---|---|
-| Switch expressions | Java 14 | ✅ Prefer over switch statements |
-| Text Blocks | Java 15 | ✅ Use for multi-line strings (SQL, JSON, HTML) |
-| Java Records | Java 16 | ✅ Use for immutable data carriers, DTOs, config properties |
-| Pattern Matching (`instanceof`) | Java 16 | ✅ Eliminate explicit casts |
-| Sealed classes | Java 17 | ✅ Use where appropriate |
-| Pattern Matching (`switch`) | Java 21 | ✅ Use for type-based dispatch |
-| Virtual Threads | Java 21 | ✅ Consider for I/O-bound concurrency |
-| `var` | Java 10 | ❌ **Never use** |
+| Switch expressions | Java 14 | Prefer over switch statements |
+| Text Blocks | Java 15 | Use for multi-line strings (SQL, JSON, HTML) |
+| Java Records | Java 16 | Use for immutable data carriers, DTOs, config properties |
+| Pattern Matching (`instanceof`) | Java 16 | Eliminate explicit casts |
+| Sealed classes | Java 17 | Use where appropriate |
+| Pattern Matching (`switch`) | Java 21 | Use for type-based dispatch |
+| Virtual Threads | Java 21 | Consider for I/O-bound concurrency |
+| `var` | Java 10 | **Never use** |
 
 ---
 
 ## Prohibited Dependencies
 
-- ❌ **No Lombok** — write constructors, getters, builders manually or use Records
-- ❌ **No Google Guava** — use Java standard library equivalents
+- **No Lombok** — write constructors, getters, builders manually or use Records
+- **No Google Guava** — use Java standard library equivalents
 
 ---
 

@@ -21,7 +21,7 @@ Apply these rules every time you write or review Spring Boot code in this projec
   injection may be acceptable.
 
 ```java
-// ✅ Correct
+// Correct
 public class UserService {
 
     private final UserRepository userRepository;
@@ -31,7 +31,7 @@ public class UserService {
     }
 }
 
-// ❌ Wrong
+// Wrong
 @Autowired
 private UserRepository userRepository;
 ```
@@ -41,7 +41,7 @@ private UserRepository userRepository;
 ## HTTP Client
 
 - Use **`RestClient`** for all external API calls.
-- ❌ Never use `RestTemplate`.
+- **Never** use `RestTemplate`.
 - Inject via autoconfigured **`RestClient.Builder`**:
 
 ```java
@@ -60,11 +60,11 @@ public class ExternalApiClient {
 ## Database Access
 
 - Use **`JdbcClient`** for all database operations.
-- ❌ Never use `JdbcTemplate` — **except** for batch updates.
-- ❌ Do **not** use JPA or Spring Data unless explicitly instructed.
+- **Never** use `JdbcTemplate` — **except** for batch updates.
+- Do **not** use JPA or Spring Data unless explicitly instructed.
 
 ```java
-// ✅ Correct
+// Correct
 public class UserRepository {
 
     private final JdbcClient jdbcClient;
@@ -89,7 +89,7 @@ public class UserRepository {
 - Always use **`@Configuration(proxyBeanMethods = false)`**:
 
 ```java
-// ✅ Correct
+// Correct
 @Configuration(proxyBeanMethods = false)
 public class AppConfig {
     // ...
@@ -104,14 +104,14 @@ public class AppConfig {
 - Use **`@DefaultValue`** for non-null default values.
 
 ```java
-// ✅ Correct
+// Correct
 @ConfigurationProperties(prefix = "app.storage")
 public record StorageProperties(
         String bucket,
         @DefaultValue("us-east-1") String region,
         @DefaultValue("100") int maxFileSizeMb) {}
 
-// ❌ Wrong
+// Wrong
 @Value("${app.storage.bucket}")
 private String bucket;
 ```
@@ -121,7 +121,7 @@ private String bucket;
 ## HTTP Testing in Spring Boot Tests
 
 For HTTP access in tests, use **`RestTestClient`** (Spring Boot 4 / Spring Framework 7+).
-❌ Do not use `TestRestTemplate` or `MockMvc` directly.
+Do **not** use `TestRestTemplate` or `MockMvc` directly.
 
 `RestTestClient` supports several binding modes:
 
@@ -163,8 +163,8 @@ class UserControllerIT {
 
 For demo or sample applications, use **SQLite** instead of in-memory implementations.
 
-- ❌ Do not use in-memory maps, lists, or H2/HSQLDB as a fake database.
-- ✅ Use SQLite via `jdbc:sqlite:<path>` as a lightweight persistent store.
+- Do **not** use in-memory maps, lists, or H2/HSQLDB as a fake database.
+- Use SQLite via `jdbc:sqlite:<path>` as a lightweight persistent store.
 
 For tests using SQLite, set up a disposable per-test database with `@TempDir` and
 `@DynamicPropertySource`:

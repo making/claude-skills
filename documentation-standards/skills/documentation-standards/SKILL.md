@@ -19,8 +19,8 @@ Apply these rules every time you write or update project documentation.
   they are implemented internally.
 - Include **plenty of code examples** to make usage easy to understand.
 - Write **simply and honestly** — no excessive praise, no marketing language.
-- ❌ No emojis or flashy expressions.
-- ❌ No phrases like "powerful", "seamless", "easy-to-use", "delightful", etc.
+- No emojis or flashy expressions.
+- No phrases like "powerful", "seamless", "easy-to-use", "delightful", etc.
 
 ---
 
@@ -49,7 +49,7 @@ about what goes in — only include content that is genuinely hard to recover fr
 
 ### What NOT to include
 
-- ❌ Implementation details that are recoverable from reading the source code
-- ❌ Per-method or per-class behavior descriptions
-- ❌ Regex or pattern explanations
-- ❌ Anything that would go stale quickly as code changes
+- Implementation details that are recoverable from reading the source code
+- Per-method or per-class behavior descriptions
+- Regex or pattern explanations
+- Anything that would go stale quickly as code changes
