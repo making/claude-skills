@@ -2,10 +2,7 @@
 name: java-code-standards
 description: >
   Enforces general Java coding standards when writing, reviewing, or refactoring Java code.
-  Trigger this skill whenever Java code is being written or reviewed — even if the user doesn't
-  explicitly mention standards. Covers: builder pattern usage, Javadoc language, Java 25 modern
-  features (Records, Pattern Matching, Text Blocks), and prohibited libraries/annotations.
-  Always consult this skill before producing any Java code in this project.
+  Trigger whenever Java code is being written or reviewed.
 ---
 
 # Java Code Standards

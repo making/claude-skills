@@ -1,11 +1,8 @@
 ---
 name: java-testing-standards
 description: >
-  Enforces Java testing standards when writing or reviewing test code. Trigger whenever the user
-  asks to write tests, add test coverage, set up integration tests, or review existing test
-  classes. Covers: JUnit 5 with AssertJ, @SpringBootTest with Testcontainers, @TempDir usage,
-  and test independence requirements. Always consult this skill before writing any test code
-  in this project.
+  Enforces Java testing standards when writing or reviewing test code.
+  Trigger when writing tests or reviewing test classes.
 ---
 
 # Java Testing Standards

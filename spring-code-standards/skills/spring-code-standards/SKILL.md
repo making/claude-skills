@@ -1,11 +1,8 @@
 ---
 name: spring-code-standards
 description: >
-  Enforces Spring Boot coding standards when writing or reviewing Spring components, beans,
-  configuration classes, HTTP clients, or database access code. Trigger whenever the user asks
-  to write or review Spring Boot code — controllers, services, repositories, configuration,
-  @Bean methods, RestClient usage, JdbcClient usage, or @ConfigurationProperties. Always consult
-  this skill before producing any Spring-related Java code in this project.
+  Enforces Spring Boot coding standards when writing or reviewing Spring components and configuration.
+  Trigger when writing or reviewing Spring Boot code.
 ---
 
 # Spring Code Standards

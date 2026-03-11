@@ -1,11 +1,8 @@
 ---
 name: java-package-structure
 description: >
-  Enforces the "package by feature" structure and DTO placement rules for this Java project.
-  Trigger whenever the user asks to create a new class, organize packages, add a controller,
-  service, repository, or DTO, or when reviewing the structure of existing code. Always consult
-  this skill when deciding where a new Java class should live or how to structure DTOs and
-  request/response objects.
+  Enforces "package by feature" structure and class placement rules for Java projects.
+  Trigger when creating new classes or reviewing package structure.
 ---
 
 # Java Package Structure

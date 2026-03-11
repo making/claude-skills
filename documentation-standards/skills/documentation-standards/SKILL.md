@@ -1,10 +1,8 @@
 ---
 name: documentation-standards
 description: >
-  Enforces documentation standards when writing or updating README.md, CLAUDE.md, or other
-  project documentation. Trigger whenever the user asks to write, update, or review any
-  documentation file — including README, CLAUDE.md, architecture docs, or usage guides.
-  Always consult this skill before producing any documentation for this project.
+  Enforces documentation standards when writing or updating project documentation.
+  Trigger when writing or reviewing documentation files.
 ---
 
 # Documentation Standards
