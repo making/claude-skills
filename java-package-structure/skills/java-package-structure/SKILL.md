@@ -20,7 +20,7 @@ Group classes by **business feature**, not by technical layer.
 
 ```
 com.example.app/
-├── user/                        # ✅ feature package
+├── user/                        # feature package
 │   ├── User.java                #    domain object (clean)
 │   ├── UserService.java
 │   ├── UserRepository.java
@@ -33,7 +33,7 @@ com.example.app/
 │       └── OrderController.java
 ```
 
-❌ **Never do this:**
+**Never do this:**
 ```
 com.example.app/
 ├── controller/    ← wrong: technical layer package
@@ -64,7 +64,7 @@ com.example.app/
 Define request/response DTOs as **inner record classes** inside the class that uses them.
 
 ```java
-// ✅ Correct — DTOs as inner records in the controller
+// Correct — DTOs as inner records in the controller
 public class UserController {
 
     /** Request body for user creation. */
@@ -80,7 +80,7 @@ public class UserController {
 }
 ```
 
-❌ Do **not** create a separate `dto/` package or standalone DTO classes.
+Do **not** create a separate `dto/` package or standalone DTO classes.
 
 ---
 

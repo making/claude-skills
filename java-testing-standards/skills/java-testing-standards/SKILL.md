@@ -19,7 +19,7 @@ Apply these rules every time you write or review test code in this project.
 Use **JUnit 5** with **AssertJ** assertions for service layer tests.
 
 ```java
-// ✅ Correct — AssertJ assertions
+// Correct — AssertJ assertions
 @Test
 void shouldReturnUserWhenFound() {
     User result = userService.findById(1L);
@@ -28,7 +28,7 @@ void shouldReturnUserWhenFound() {
     assertThat(result.name()).isEqualTo("Alice");
 }
 
-// ❌ Wrong — JUnit built-in assertions
+// Wrong — JUnit built-in assertions
 assertEquals("Alice", result.name());
 ```
 
@@ -67,7 +67,7 @@ void shouldWriteFile(@TempDir Path tempDir) {
 ## Test Assertion Style
 
 - Always assert the full expected output using `isEqualToNormalizingWhitespace` with a text block.
-- ❌ Do **not** use `contains` / `doesNotContain` for output verification.
+- Do **not** use `contains` / `doesNotContain` for output verification.
 
 ---
 
