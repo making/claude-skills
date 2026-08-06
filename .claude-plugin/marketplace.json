@@ -11,13 +11,13 @@
       "name": "java-code-standards",
       "source": "./java-code-standards",
       "description": "General Java coding standards: builder pattern, modern Java features, prohibited libraries",
-      "version": "1.0.8"
+      "version": "1.0.9"
     },
     {
       "name": "java-package-structure",
       "source": "./java-package-structure",
       "description": "Package by feature structure and DTO placement rules",
-      "version": "1.0.5"
+      "version": "1.0.6"
     },
     {
       "name": "java-testing-standards",
