@@ -217,6 +217,44 @@ version than the project targets.
 ## Circular References
 
 - Avoid circular references between **classes** and between **packages**.
+- If two packages need each other, extract the shared concept into a separate package, or invert
+  one direction with an interface owned by the depending side.
+
+Enforce package cycles with an ArchUnit test so violations fail the build instead of relying on
+review. Add the dependency if missing:
+
+```xml
+<dependency>
+    <groupId>com.tngtech.archunit</groupId>
+    <artifactId>archunit-junit5</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+```java
+import com.tngtech.archunit.core.importer.ImportOption;
+import com.tngtech.archunit.junit.AnalyzeClasses;
+import com.tngtech.archunit.junit.ArchTest;
+import com.tngtech.archunit.lang.ArchRule;
+
+import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
+
+@AnalyzeClasses(packages = "com.example.myapp", importOptions = ImportOption.DoNotIncludeTests.class)
+class PackageCycleArchTest {
+
+    @ArchTest
+    static final ArchRule packagesAreFreeOfCycles = slices().matching("com.example.myapp.(*)..")
+        .should()
+        .beFreeOfCycles();
+
+}
+```
+
+- Replace `com.example.myapp` with the application's base package.
+- `matching("...(*)..")` slices by the first package segment below the base package, so each
+  top-level package becomes one slice.
+- Never suppress a detected cycle by narrowing the slice pattern — fix the dependency direction
+  instead.
 
 ---
 
@@ -233,4 +271,5 @@ version than the project targets.
 - [ ] JSpecify dependency present in `pom.xml`
 - [ ] `mvn compile` passes with no NullAway errors
 - [ ] No circular dependencies between classes or packages
+- [ ] An ArchUnit `beFreeOfCycles` test exists and passes
 
