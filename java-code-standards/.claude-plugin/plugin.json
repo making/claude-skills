@@ -1,7 +1,7 @@
 {
   "name": "java-code-standards",
   "description": "General Java coding standards: builder pattern, modern Java features, prohibited libraries",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "author": {
     "name": "making"
   },

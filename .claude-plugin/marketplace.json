@@ -11,31 +11,31 @@
       "name": "java-code-standards",
       "source": "./java-code-standards",
       "description": "General Java coding standards: builder pattern, modern Java features, prohibited libraries",
-      "version": "1.0.0"
+      "version": "1.0.8"
     },
     {
       "name": "java-package-structure",
       "source": "./java-package-structure",
       "description": "Package by feature structure and DTO placement rules",
-      "version": "1.0.0"
+      "version": "1.0.4"
     },
     {
       "name": "java-testing-standards",
       "source": "./java-testing-standards",
       "description": "Testing standards: JUnit 5, AssertJ, Testcontainers, assertion style",
-      "version": "1.0.0"
+      "version": "1.0.6"
     },
     {
       "name": "spring-code-standards",
       "source": "./spring-code-standards",
       "description": "Spring Boot standards: DI, RestClient, JdbcClient, configuration, SQLite, HTTP testing",
-      "version": "1.0.0"
+      "version": "1.0.6"
     },
     {
       "name": "documentation-standards",
       "source": "./documentation-standards",
       "description": "Documentation standards for README.md and CLAUDE.md",
-      "version": "1.0.0"
+      "version": "1.0.4"
     }
   ]
 }

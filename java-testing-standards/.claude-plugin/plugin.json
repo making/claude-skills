@@ -1,7 +1,7 @@
 {
   "name": "java-testing-standards",
   "description": "Testing standards: JUnit 5, AssertJ, Testcontainers, assertion style",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "author": {
     "name": "making"
   },

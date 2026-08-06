@@ -1,0 +1,45 @@
+name: Sync Plugin Versions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: sync-versions-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      # On pull requests, only report drift; the versions are synced when the
+      # pull request lands on main.
+      - name: Check versions
+        if: github.event_name == 'pull_request'
+        run: node scripts/sync-versions.mjs --check
+
+      - name: Sync versions
+        if: github.event_name == 'push'
+        run: node scripts/sync-versions.mjs
+
+      - name: Commit
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet; then
+            echo "No version changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Sync plugin versions [skip ci]"
+          git push
