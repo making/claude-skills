@@ -1,7 +1,7 @@
 {
   "name": "java-package-structure",
   "description": "Package by feature structure and DTO placement rules",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "making"
   },
