@@ -11,7 +11,7 @@
       "name": "java-code-standards",
       "source": "./java-code-standards",
       "description": "General Java coding standards: builder pattern, modern Java features, prohibited libraries",
-      "version": "1.0.10"
+      "version": "1.0.11"
     },
     {
       "name": "java-package-structure",
