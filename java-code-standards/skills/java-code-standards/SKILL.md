@@ -23,7 +23,7 @@ Apply these rules every time you write or review Java code in this project.
   <plugin>
       <groupId>io.spring.javaformat</groupId>
       <artifactId>spring-javaformat-maven-plugin</artifactId>
-      <version>0.0.47</version>
+      <version>0.0.48</version>
   </plugin>
   ```
 
@@ -203,7 +203,7 @@ version than the project targets.
   <dependency>
       <groupId>org.jspecify</groupId>
       <artifactId>jspecify</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
   </dependency>
   ```
 - **Approach**: Do NOT eagerly annotate with `@Nullable`. Instead, keep the default (non-null) and
