@@ -183,7 +183,7 @@ version than the project targets.
   <plugin>
       <groupId>am.ik.maven</groupId>
       <artifactId>nullability-maven-plugin</artifactId>
-      <version>0.5.1</version>
+      <version>0.5.2</version>
       <extensions>true</extensions>
       <executions>
           <execution>
